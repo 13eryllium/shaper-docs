@@ -229,6 +229,22 @@ Blends two colors together with a specified ratio.
 - `angle_difference()` - Calculate the difference between two angles
 
 #### General Math
+Here’s a mini-doc for `ilerp()` (inverse lerp) in your requested format:
+
+---
+
+#### `ilerp(start, end, value)`
+
+Returns how far `value` lies between `start` and `end`, as a normalized value from 0 to 1.
+
+| Parameter | Description |
+|-----------|-------------|
+| `start` | The start of the range |
+| `end` | The end of the range |
+| `value` | The value to normalize between `start` and `end` |
+
+Returns 0 if the calculation would result in `NaN` (e.g., when `a == b`).
+
 - `lerp()` - Linear interpolation between two values
 - `clamp()` - Constrain a value between minimum and maximum
 - `min()` - Return the smallest value
