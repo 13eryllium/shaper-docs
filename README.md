@@ -12,13 +12,13 @@ Shaper allows you to access the following GM events:
 
 | Event | Description |
 |-------|-------------|
-| `create` | Triggered once when the object is first instantiated |
-| `clean_up` | Called when the object is being destroyed |
+| `create`     | Triggered once when the object is first instantiated |
+| `clean_up`   | Called when the object is being destroyed |
 | `begin_step` | Executed at the start of each game step |
-| `step` | Main logic executed during each game step |
-| `end_step` | Executed at the end of each game step |
-| `draw` | Handles rendering and visual updates |
-| `draw_end` | Final drawing operations (goes above draw) |
+| `step`       | Main logic executed during each game step |
+| `end_step`   | Executed at the end of each game step |
+| `draw`       | Handles rendering and visual updates |
+| `draw_end`   | Final drawing operations (goes above draw) |
 
 ## Event Implementation
 
@@ -54,6 +54,86 @@ These are all the scripts you have access to. Most of these have their documenta
 
 #### [**twerp()**](https://pixelatedpope.itch.io/twerp) & its in-house `twerp_ext()`
 Tweening/easing functions for smooth animations.
+
+#### `twerp_ext(type, start_val, end_val, duration, twerp_mode, delay)`
+Advanced tweening function with extended features for animations.
+
+| Parameter | Description |
+|-----------|-------------|
+| `type` | The easing type (e.g., "Linear", "Quad", "Cubic", etc.) |
+| `start_val` | Starting value of the animation |
+| `end_val` | Ending value of the animation |
+| `duration` | Duration of the animation in seconds |
+| `twerp_mode` | Animation mode: "once", "loop", or "patrol" |
+| `delay` | Delay before animation starts (optional, default: 0) |
+
+#### `twerp_process(twerp_asset)`
+Updates and returns the current value of the twerp asset.
+
+| Parameter | Description |
+|-----------|-------------|
+| `twerp_asset` | The twerp asset to process |
+
+#### `twerp_percent(twerp_asset)`
+Returns the current progress percentage (0.0 to 1.0) of the animation.
+
+| Parameter | Description |
+|-----------|-------------|
+| `twerp_asset` | The twerp asset to check |
+
+#### `twerp_reset(twerp_asset)`
+Resets the twerp asset to its initial state.
+
+| Parameter | Description |
+|-----------|-------------|
+| `twerp_asset` | The twerp asset to reset |
+
+#### `twerp_has_finished(twerp_asset)`
+Checks if the animation has completed.
+
+| Parameter | Description |
+|-----------|-------------|
+| `twerp_asset` | The twerp asset to check |
+
+#### `twerp_has_finished_delay(twerp_asset)`
+Checks if the delay period has finished and the animation is ready to start.
+
+| Parameter | Description |
+|-----------|-------------|
+| `twerp_asset` | The twerp asset to check |
+
+#### `twerp_chain_finished(twerp_asset)`
+Checks if both the main animation and any chained animations have completed.
+
+| Parameter | Description |
+|-----------|-------------|
+| `twerp_asset` | The twerp asset to check |
+
+#### `twerp_chain(parent_twerp, type, start_val, end_val, duration, twerp_mode, delay)`
+Creates a chained animation that starts when the parent animation finishes.
+
+| Parameter | Description |
+|-----------|-------------|
+| `parent_twerp` | The parent twerp asset to chain from |
+| `type` | The easing type for the chained animation |
+| `start_val` | Starting value of the chained animation |
+| `end_val` | Ending value of the chained animation |
+| `duration` | Duration of the chained animation in seconds |
+| `twerp_mode` | Animation mode: "once", "loop", or "patrol" |
+| `delay` | Delay before chained animation starts (optional, default: 0) |
+
+#### `twerp_chain_duplicate(parent_twerp, type, start_val, end_val, duration, twerp_mode, delay)`
+Creates an independent twerp that waits for the parent to finish before starting.
+
+| Parameter | Description |
+|-----------|-------------|
+| `parent_twerp` | The parent twerp asset to wait for |
+| `type` | The easing type for the new animation |
+| `start_val` | Starting value of the new animation |
+| `end_val` | Ending value of the new animation |
+| `duration` | Duration of the new animation in seconds |
+| `twerp_mode` | Animation mode: "once", "loop", or "patrol" |
+| `delay` | Delay before new animation starts (optional, default: 0) |
 
 ### Drawing Functions
 
