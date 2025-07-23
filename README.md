@@ -12,13 +12,13 @@ Shaper allows you to access the following GM events:
 
 | Event | Description |
 |-------|-------------|
-| `create`     | Triggered once when the object is first instantiated |
-| `clean_up`   | Called when the object is being destroyed |
+| `create` | Triggered once when the object is first instantiated |
+| `clean_up` | Called when the object is being destroyed |
 | `begin_step` | Executed at the start of each game step |
-| `step`       | Main logic executed during each game step |
-| `end_step`   | Executed at the end of each game step |
-| `draw`       | Handles rendering and visual updates |
-| `draw_end`   | Final drawing operations (goes above draw) |
+| `step` | Main logic executed during each game step |
+| `end_step` | Executed at the end of each game step |
+| `draw` | Handles rendering and visual updates |
+| `draw_end` | Final drawing operations (goes above draw) |
 
 ## Event Implementation
 
@@ -26,7 +26,7 @@ Define events in your **code.meow** file using the following syntax:
 
 ### Basic Event Structure
 ```javascript
-create = fun() {
+create = fun(spawn_params) {
   // Initialization logic here
 }
 
