@@ -198,6 +198,14 @@ Randomly selects one value from the provided arguments.
 #### `kill()`
 Destroys the object (equivalent to instance_destroy).
 
+#### `instantiate(object, params)`
+Creates an object (equivalent to instance_create).
+
+| Parameter | Description |
+|-----------|-------------|
+| `object` | The string of the object name to spawn (attack_internal) |
+| `params` | The params (spawn_params) to instantiate the object with |
+
 #### `offscreen(sprite)`
 Checks if a sprite is outside the visible screen area.
 
