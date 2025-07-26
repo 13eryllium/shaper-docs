@@ -13,12 +13,8 @@ Shaper allows you to access the following GM events:
 | Event | Description |
 |-------|-------------|
 | `create` | Triggered once when the object is first instantiated |
-| `clean_up` | Called when the object is being destroyed |
-| `begin_step` | Executed at the start of each game step |
 | `step` | Main logic executed during each game step |
-| `end_step` | Executed at the end of each game step |
 | `draw` | Handles rendering and visual updates |
-| `draw_end` | Final drawing operations (goes above draw) |
 
 ## Event Implementation
 
@@ -262,7 +258,12 @@ Returns 0 if the calculation would result in `NaN` (e.g., when `a == b`).
 - `array_push()` - Add an element to the end of an array
 
 #### Debug Functions
-- `show_message()` - Display a debug message
+#### `log(data)`
+Logs a string to the ingame console.
+
+| Parameter | Description |
+|-----------|-------------|
+| `data` | The thing to log |
 
 ---
 
