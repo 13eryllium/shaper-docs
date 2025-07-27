@@ -209,6 +209,128 @@ Checks if a sprite is outside the visible screen area.
 |-----------|-------------|
 | `sprite` | The sprite to check if is offscreen |
 
+Here are the mini-docs in your preferred format for the functions you shared:
+
+---
+
+#### `apparition_ghost(position, duration, scale, additive)`
+
+Creates a shrinking circle apparition used in bullet visuals that moves relative to the bullet with a speed multiplier.
+
+| Parameter  | Description                               |
+| ---------- | ----------------------------------------- |
+| `position` | The position where the apparition appears |
+| `duration` | How long the apparition lasts             |
+| `scale`    | The size of the apparition                |
+| `additive` | Multiple to apply to the movement speed   |
+
+---
+
+#### `apparition_stick(position, duration, scale)`
+
+Creates a shrinking circle apparition used in bullet visuals that stays on top of the bullet.
+
+| Parameter  | Description                               |
+| ---------- | ----------------------------------------- |
+| `position` | The position where the apparition appears |
+| `duration` | How long the apparition lasts             |
+| `scale`    | The size of the apparition                |
+
+---
+
+#### `trail_create(delay, sprite, lifetime, size, rot_speed, shake)`
+
+Creates a trail effect for bullets.
+
+| Parameter   | Description                     |
+| ----------- | ------------------------------- |
+| `delay`     | Time between trail segments     |
+| `sprite`    | Sprite used for trail segments  |
+| `lifetime`  | Duration of each trail segment  |
+| `size`      | Size of each segment            |
+| `rot_speed` | Rotation speed of segments      |
+| `shake`     | Amount of jitter added to trail |
+
+---
+
+#### `create_angle_bullet_ext(_x, _y, angle, rot_speed, spd, size, curve, sprite, app_struct, trail_struct)`
+
+Creates a bullet that moves based on angle and speed.
+
+| Parameter      | Description                 |
+| -------------- | --------------------------- |
+| `_x`           | Initial x position          |
+| `_y`           | Initial y position          |
+| `angle`        | Initial movement angle      |
+| `rot_speed`    | How fast the bullet rotates |
+| `spd`          | Movement speed              |
+| `size`         | Bullet size                 |
+| `curve`        | Path curvature factor       |
+| `sprite`       | Bullet sprite               |
+| `app_struct`   | Optional apparition struct  |
+| `trail_struct` | Optional trail struct       |
+
+---
+
+#### `create_angle_bullet(_x, _y, angle, rot_speed, spd, size, curve, sprite, app_scale, app_pos, app_duration)`
+
+Creates an angle-based bullet with an automatic stick apparition.
+
+| Parameter      | Description                 |
+| -------------- | --------------------------- |
+| `_x`           | Initial x position          |
+| `_y`           | Initial y position          |
+| `angle`        | Initial movement angle      |
+| `rot_speed`    | How fast the bullet rotates |
+| `spd`          | Movement speed              |
+| `size`         | Bullet size                 |
+| `curve`        | Path curvature factor       |
+| `sprite`       | Bullet sprite               |
+| `app_scale`    | Apparition size             |
+| `app_pos`      | Apparition position         |
+| `app_duration` | Apparition lifetime         |
+
+---
+
+#### `create_velocity_bullet_ext(_x, _y, xv, yv, rot_speed, grv, size, sprite, app_struct, trail_struct)`
+
+Creates a bullet that moves with x/y velocity and gravity.
+
+| Parameter      | Description                  |
+| -------------- | ---------------------------- |
+| `_x`           | Initial x position           |
+| `_y`           | Initial y position           |
+| `xv`           | Horizontal velocity          |
+| `yv`           | Vertical velocity            |
+| `rot_speed`    | How fast the bullet rotates  |
+| `grv`          | Gravity affecting the bullet |
+| `size`         | Bullet size                  |
+| `sprite`       | Bullet sprite                |
+| `app_struct`   | Optional apparition struct   |
+| `trail_struct` | Optional trail struct        |
+
+---
+
+#### `create_velocity_bullet(_x, _y, xv, yv, rot_speed, grv, size, sprite, app_scale, app_pos, app_duration)`
+
+Creates a velocity-based bullet with an automatic ghost apparition.
+
+| Parameter      | Description                  |
+| -------------- | ---------------------------- |
+| `_x`           | Initial x position           |
+| `_y`           | Initial y position           |
+| `xv`           | Horizontal velocity          |
+| `yv`           | Vertical velocity            |
+| `rot_speed`    | How fast the bullet rotates  |
+| `grv`          | Gravity affecting the bullet |
+| `size`         | Bullet size                  |
+| `sprite`       | Bullet sprite                |
+| `app_scale`    | Apparition size              |
+| `app_pos`      | Apparition position          |
+| `app_duration` | Apparition lifetime          |
+
+---
+
 ### Color Functions
 
 #### `merge_color()`
