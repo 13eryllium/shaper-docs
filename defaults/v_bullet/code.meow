@@ -1,0 +1,18 @@
+--          _
+--         |_|
+--  ____    ____    _____   _____    _____   _____
+-- /____|  |_____\ /_____| |_____\  /_____| /_____|
+-- ____     _   _   _   _   _    _   _____   _
+-- \____\  |_| |_| |_| |_| |_|  |_| |_____| |_|
+--  _____   _   _   ___ _   _____   ______   _
+-- /____/  |_| |_| |__/|_| |_____/  \_____| |_|
+--                          _
+--                         |_|
+
+-- this is the basic code for a Shaper attack
+-- A basic bullet attack
+
+create = fun(spawn_params) {
+    create_velocity_bullet(spawn_params.x, spawn_params.y, spawn_params.xv, spawn_params.yv, spawn_params.rot_speed, spawn_params.grv, spawn_params.size, spawn_params.sprite, spawn_params.app_scale, spawn_params.app_pos, spawn_params.app_duration)
+    kill()
+}
