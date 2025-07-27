@@ -401,6 +401,57 @@ Blends two colors together with a specified ratio.
 - `distance_to_object()` - Calculate distance to another object
 - `angle_difference()` - Calculate the difference between two angles
 
+### Effects
+
+#### `effect_layer_set(slot, effect_name)`  
+Sets a post-processing effect on the specified layer slot (1–3).
+
+| Parameter     | Description |
+|---------------|-------------|
+| `slot`        | Effect layer slot (clamped from 1 to 3) |
+| `effect_name` | The name of the effect to apply |
+
+---
+
+#### `effect_layer_set_silent(slot, effect_name)`  
+Sets a post-processing effect on the specified slot with zero intensity.
+
+| Parameter     | Description |
+|---------------|-------------|
+| `slot`        | Effect layer slot (clamped from 1 to 3) |
+| `effect_name` | The name of the effect to prepare silently |
+
+---
+
+#### `effect_set(slot, parameter, value)`  
+Updates a specific parameter of the effect on the given slot.
+
+| Parameter   | Description |
+|-------------|-------------|
+| `slot`      | Effect layer slot (1–3) |
+| `parameter` | Parameter to change (e.g., `intensity`, `color`) |
+| `value`     | New value for the parameter (number, color, or array) |
+
+---
+
+#### `effect_layer_clear(slot)`  
+Removes any post-processing effect from the specified slot.
+
+| Parameter | Description |
+|-----------|-------------|
+| `slot`    | Effect layer slot (1–3) |
+
+### Effect Table
+
+| Effect Name   | Adjustable Parameters |
+|---------------|------------------------|
+| `Desaturate`  | `intensity`           |
+| `ColorTint`   | `color`, `tint`       |
+| `ZoomBlur`    | `intensity`, `focus_radius`, `center`, `position`, `noise_texture` |
+| `Pixelate`    | `cell_size`           |
+| `GaussianBlur`| `downsample_count`, `passes` |
+| `WhiteNoise`  | `intensity`, `animation`, `white_noise_texture` |
+
 #### General Math
 #### `ilerp(start, end, value)`
 
