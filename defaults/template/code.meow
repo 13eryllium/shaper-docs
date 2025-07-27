@@ -1,0 +1,48 @@
+-- this is the Spotto template for objects, all comments are free to be removed
+--   |\ |\       o-------------------------------o
+-- >( XwO )< o--[| But I'll be sad if you do... /
+--   |\ |\__>    o-----------------------------/
+-- you can find a Spotto free version in template_clean
+
+create = fun(spawn_params) {
+    -- initialize position
+    self.x = random(0, 1920)
+    self.y = random(0, 1080)
+
+    -- set object variables
+    self.image_xscale = 1
+    self.image_yscale = 1
+    self.image_blend = #FFFFFF
+    self.image_alpha = 1
+
+    --   |\ |\       o---------------------------------------------------------------------------------o
+    -- >( XwO )< o--[| that timer looks stupid! I don't think you need it as much as the stuff above. /
+    --   |\ |\__>    o-------------------------------------------------------------------------------/
+
+    self.timer = 0
+}
+
+step = fun() {
+    self.timer += dt
+
+    --   |\ |\       o------------------------------------------------------------------------------o
+    -- >( X>O )< o--[| 13eryllium says that you should always have a kill script for your objects! /
+    --   |\ |\__>    o----------------------------------------------------------------------------/
+    
+    if self.timer > 5000 {
+        kill()
+    }
+}
+
+draw = fun() {
+    --   |\ |\       o------------------------------------------------------------------------o
+    -- >( X∇O )< o--[| OOOH! I LOVE DRAWING!!! I draw very pretty things all the time! li... / -- excessive yapping cat
+    --   |\ |\__>    o----------------------------------------------------------------------/
+    draw_nexa(self.x, self.y, "bananas", c_jpink, c_jpink, 0.5, 0.5, "light", fa_center, fa_middle)
+}
+
+-- other events include:
+-- clean_up > runs when you use kill(), lets you clean up stuff
+-- begin_step > runs before the step event
+-- end_step > runs after the step event
+-- draw_end > draws over the draw event
