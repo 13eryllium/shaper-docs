@@ -45,8 +45,13 @@ These are all the scripts you have access to. Most of these have their documenta
 
 ### External Libraries
 
-#### **ALL** [**Icoso**](https://github.com/13eryllium/gml-scripts?tab=readme-ov-file#icoso_parseexpression) **functions**
-*Read the documentation there.*
+#### `eval(expression)`
+
+Parses and evaluates a math expression, including variable substitution.
+
+| Parameter    | Description                                           |
+| ------------ | ----------------------------------------------------- |
+| `expression` | A string representing a numeric expression or formula |
 
 #### [**twerp()**](https://pixelatedpope.itch.io/twerp) & its in-house `twerp_ext()`
 Tweening/easing functions for smooth animations.
