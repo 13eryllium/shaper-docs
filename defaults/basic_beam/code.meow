@@ -1,0 +1,132 @@
+--          _
+--         |_|
+--  ____    ____    _____   _____    _____   _____
+-- /____|  |_____\ /_____| |_____\  /_____| /_____|
+-- ____     _   _   _   _   _    _   _____   _
+-- \____\  |_| |_| |_| |_| |_|  |_| |_____| |_|
+--  _____   _   _   ___ _   _____   ______   _
+-- /____/  |_| |_| |__/|_| |_____/  \_____| |_|
+--                          _
+--                         |_|
+
+-- this is the basic code for a Shaper attack
+-- A basic beam attack
+-- fti twerp_ext may be a bad practice. using lots of objects with twerp_ext can be computationally expensive.
+
+create = fun(spawn_params) {
+
+    -- set param variables
+    self.x = eval(spawn_params.x)
+    self.y = eval(spawn_params.y)
+    
+    self.size = eval(spawn_params.width)
+    self.side = spawn_params.side
+
+    self.warn = eval(spawn_params.warn)
+    self.active = eval(spawn_params.active)
+
+    -- set object variables
+    self.image_xscale = self.size / 1024
+    self.image_yscale = 0
+    self.image_blend = #FFFFFF
+    self.image_alpha = 0
+
+    -- warn code
+    
+    self.warn_xscale = self.image_xscale
+    self.warn_yscale = 1920 / 1024
+
+    self.warn_alpha = 0
+    self.warn_alpha_tween = twerp_ext("Linear", 0, 1, self.warn / 1000, "once")
+
+    self.warn_blend = #FFFFFF
+    self.warn_blend_val = 0
+    self.warn_blend_tween = twerp_ext("Linear", 0, 1, (self.warn / 1000) * 0.15, "loop")
+
+    -- active code
+    self.active_div = self.active / 1000
+
+    self.active_duration = self.active_div * 0.1
+    self.active_duration = clamp(self.active_duration, 0, 0.1)
+
+    self.active_xscale_tween = twerp_ext("Linear", 0, self.image_xscale, self.active_duration, "once")
+    self.active_xscale_tween_end = twerp_chain(self.active_xscale_tween, "Linear", self.image_xscale, 0, self.active_duration, "once", self.active_div - (self.active_duration * 2))
+    self.active_xscale = 0
+
+    -- for deletion
+    self.timer = 0
+
+    --                                            |\ |\
+    -- #region set the side without switch case >( XwT )<
+    --                                            |\ |\__>
+
+    if self.side == "any" {
+        self.side = choose("left", "right", "up", "down")
+    }
+    if self.side == "any horizontal" {
+        self.side = choose("left", "right")
+    }
+    if self.side == "any vertical" {
+        self.side = choose("up", "down")
+    }
+
+    if self.side == "left" {
+        self.x = 0
+        self.image_angle = -90
+    }
+
+    if self.side == "right" {
+        self.x = 1920
+        self.image_angle = 90
+    }
+    
+    if self.side == "up" {
+        self.y = 0
+        self.image_angle = 180
+    }
+
+    if self.side == "down" {
+        self.y = 1080
+        self.image_angle = 0
+    }
+    -- #endregion
+
+    -- push the actual sprite up half way for collisions (it's centered)
+    self.draw_x = self.x
+    self.draw_y = self.y
+
+    let rotate = 90
+    self.x += lengthdir_x(1920 / 2, self.image_angle + rotate)
+    self.y += lengthdir_y(1920 / 2, self.image_angle + rotate)
+}
+
+step = fun() {
+    self.timer += dt
+
+    if twerp_has_finished(self.warn_alpha_tween) {
+        self.image_yscale = 1920 / 1024
+        self.active_xscale = twerp_process(self.active_xscale_tween) 
+    } else {
+        self.warn_alpha = twerp_process(self.warn_alpha_tween)
+
+        self.warn_xscale = lerp(0, self.image_xscale, self.warn_alpha)
+
+        self.warn_blend_val = twerp_process(self.warn_blend_tween)
+        self.warn_blend = merge_color(merge_color(#FFFFFF, level_color, 0.85), level_color, self.warn_blend_val)
+    }
+    
+    if self.timer > (self.warn + self.active) {
+        kill()
+    }
+}
+
+draw = fun() {
+    if twerp_has_finished(self.active_xscale_tween) {
+        self.image_blend = level_color
+    } else {
+        draw_sprite_anchored_ext(self.sprite_index, 0, self.draw_x, self.draw_y, self.warn_xscale, self.warn_yscale, self.image_angle, self.warn_blend, self.warn_alpha * 0.2, 0, 0.5)
+    }
+
+    draw_self()
+    draw_sprite_anchored_ext(self.sprite_index, 0, self.draw_x, self.draw_y, self.active_xscale, self.image_yscale, self.image_angle, self.image_blend, 1, 0, 0.5)
+}

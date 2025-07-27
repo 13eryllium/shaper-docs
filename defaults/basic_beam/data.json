@@ -1,0 +1,57 @@
+{
+    "attackName": "Beam",
+    "attackInternal": "basic_beam",
+    "appearInPalette": true,
+    "attackParams": [
+        {
+            "paramType": "string",
+            "paramName": "x",
+            "paramDefault": "random(0,1920)",
+            "paramInt": "x",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "string",
+            "paramName": "y",
+            "paramDefault": "random(0,1080)",
+            "paramInt": "y",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "string",
+            "paramName": "warn",
+            "paramDefault": "2000",
+            "paramInt": "warn",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "string",
+            "paramName": "active",
+            "paramDefault": "1500",
+            "paramInt": "active",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "string",
+            "paramName": "width",
+            "paramDefault": "30",
+            "paramInt": "width",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "dropdown",
+            "paramName": "side",
+            "paramDefault": "any",
+            "paramInt": "side",
+            "paramDropdown": [
+                "left",
+                "right",
+                "up",
+                "down",
+                "any vertical",
+                "any horizontal",
+                "any"
+            ]
+        }
+    ]
+}
