@@ -1,5 +1,6 @@
 {
     "attackName": "Template",
     "attackInternal": "template_clean",
+    "appearInPalette": true,
     "attackParams": []
 }
