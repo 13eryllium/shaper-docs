@@ -4,7 +4,49 @@
 
 ## Overview
 
-`code.meow` contains the logic for your attack patterns and object behaviors. This file defines how your objects function.
+Shaper uses two main files to define attack patterns and object behaviors:
+
+- **`code.meow`** - Contains the logic for your attack patterns and object behaviors
+- **`data.json`** - Defines attack metadata and spawn parameters
+
+### File Structure
+
+Attacks are stored in: `%localappdata%/thirteenE/Shaper/attacks/your_attack/`
+
+Each attack folder must include:
+- `data.json` - Attack configuration and parameters
+- `code.meow` - Behavior logic and event handlers
+
+### data.json Structure
+
+The `data.json` file configures your attack with the following properties:
+
+- `attackName` - Display name shown in the interface
+- `attackInternal` - Internal identifier (usually matches folder name)
+- `appearInPalette` - Boolean determining if the attack appears in the palette
+- `attackParams` - Array of spawn parameters for the object
+
+### Attack Parameters
+
+Each parameter in the `attackParams` array contains:
+
+- `paramType` - Parameter type: `string`, `dropdown`, `sprite`, or `boolean` (currently unused)
+- `paramName` - Display name for the parameter (currently unused)
+- `paramDefault` - Default value (always stored as string)
+- `paramInt` - Internal name used in `code.meow`
+- `paramDropdown` - Array of dropdown options if `paramType` is `dropdown`, otherwise `-1` (currently unused)
+
+### Using Parameters in Code
+
+For numeric parameters (positions, dimensions, etc.), use `eval()` to convert string values:
+
+```javascript
+create = fun(spawn_params) {
+  -- Use self to set object variables instead of global variables
+  self.x = eval(spawn_params.x)
+  -- This evaluates the spawn_params.x string into a number
+}
+```
 
 ## Available Events
 
@@ -23,15 +65,15 @@ Define events in your **code.meow** file using the following syntax:
 ### Basic Event Structure
 ```javascript
 create = fun(spawn_params) {
-  // Initialization logic here
+  -- Initialization logic here
 }
 
 step = fun() {
-  // Main game logic
+  -- Main game logic
 }
 
 draw = fun() {
-  // Sprite rendering
+  -- Sprite rendering
 }
 ```
 
