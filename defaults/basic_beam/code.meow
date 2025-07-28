@@ -26,7 +26,7 @@ create = fun(spawn_params) {
     self.active = eval(spawn_params.active)
 
     -- set object variables
-    self.image_xscale = self.size / 1024
+    self.image_xscale = self.size / sprite_get_width(sprite("square"))
     self.image_yscale = 0
     self.image_blend = #FFFFFF
     self.image_alpha = 0
@@ -34,7 +34,7 @@ create = fun(spawn_params) {
     -- warn code
     
     self.warn_xscale = self.image_xscale
-    self.warn_yscale = 1920 / 1024
+    self.warn_yscale = 1920 / sprite_get_width(sprite("square"))
 
     self.warn_alpha = 0
     self.warn_alpha_tween = twerp_ext("Linear", 0, 1, self.warn / 1000, "once")
@@ -104,7 +104,7 @@ step = fun() {
     self.timer += dt
 
     if twerp_has_finished(self.warn_alpha_tween) {
-        self.image_yscale = 1920 / 1024
+        self.image_yscale = 1920 / sprite_get_width(sprite("square"))
         self.active_xscale = twerp_process(self.active_xscale_tween) 
     } else {
         self.warn_alpha = twerp_process(self.warn_alpha_tween)
