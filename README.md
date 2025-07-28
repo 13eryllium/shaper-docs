@@ -48,6 +48,13 @@ create = fun(spawn_params) {
 }
 ```
 
+### Sprites
+You can add a sprite in  `%localappdata%/thirteenE/Shaper/sprites/yourspritename.png`
+
+You reference a sprite by doing `sprite(yourspritename)`
+
+The editor will automatically convert sprites in the folder into usable sprites for dropdown, so if you have a sprite in your `spawn_params`, you could use `sprite(spawn_params.sprite)`
+
 ## Available Events
 
 Shaper allows you to access the following GM events:
@@ -256,7 +263,12 @@ Checks if a sprite is outside the visible screen area.
 |-----------|-------------|
 | `sprite` | The sprite to check if is offscreen |
 
-Here are the mini-docs in your preferred format for the functions you shared:
+#### `sprite(sprite name)`
+Gets a sprite to use in drawing.
+
+| Parameter | Description |
+|-----------|-------------|
+| `sprite` | The sprite to get |
 
 ---
 
