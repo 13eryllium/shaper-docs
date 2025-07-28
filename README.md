@@ -187,6 +187,12 @@ Creates an independent twerp that waits for the parent to finish before starting
 
 ### Drawing Functions
 
+#### `sprite_get_width()`
+Gets the width of a given sprite
+
+#### `sprite_get_height()`
+Gets the height of a given sprite
+
 #### `draw_self()`
 Draws the object's current sprite at its position.
 
