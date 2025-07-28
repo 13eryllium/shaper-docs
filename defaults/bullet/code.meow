@@ -13,6 +13,7 @@
 -- A basic bullet attack
 
 create = fun(spawn_params) {
-    create_angle_bullet(spawn_params.x, spawn_params.y, spawn_params.angle, spawn_params.rot_speed, spawn_params.spd, spawn_params.size, spawn_params.curve, spawn_params.sprite, spawn_params.app_scale, spawn_params.app_pos, spawn_params.app_duration)
+    let spr = sprite(spawn_params.sprite)
+    create_angle_bullet(spawn_params.x, spawn_params.y, spawn_params.angle, spawn_params.rot_speed, spawn_params.spd, spawn_params.size, spawn_params.curve, spr, spawn_params.app_scale, spawn_params.app_pos, spawn_params.app_duration)
     kill()
 }
