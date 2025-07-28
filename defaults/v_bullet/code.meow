@@ -10,9 +10,10 @@
 --                         |_|
 
 -- this is the basic code for a Shaper attack
--- A basic bullet attack
+-- A gravity based bullet attack
 
 create = fun(spawn_params) {
-    create_velocity_bullet(spawn_params.x, spawn_params.y, spawn_params.xv, spawn_params.yv, spawn_params.rot_speed, spawn_params.grv, spawn_params.size, spawn_params.sprite, spawn_params.app_scale, spawn_params.app_pos, spawn_params.app_duration)
+    let spr = sprite(spawn_params.sprite)
+    create_velocity_bullet(spawn_params.x, spawn_params.y, spawn_params.xv, spawn_params.yv, spawn_params.rot_speed, spawn_params.grv, spawn_params.size, spr, spawn_params.app_scale, spawn_params.app_pos, spawn_params.app_duration)
     kill()
 }
