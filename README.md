@@ -460,15 +460,19 @@ Removes any post-processing effect from the specified slot.
 | `slot`    | Effect layer slot (1–3) |
 
 ### Effect Table
-
-| Effect Name   | Adjustable Parameters |
-|---------------|------------------------|
-| `Desaturate`  | `intensity`           |
-| `ColorTint`   | `color`, `tint`       |
-| `ZoomBlur`    | `intensity`, `focus_radius`, `center`, `position`, `noise_texture` |
-| `Pixelate`    | `cell_size`           |
-| `GaussianBlur`| `downsample_count`, `passes` |
-| `WhiteNoise`  | `intensity`, `animation`, `white_noise_texture` |
+| Effect Name       | Adjustable Parameters |
+|-------------------|------------------------|
+| `Desaturate`      | `intensity`           |
+| `ColorTint`       | `color`, `tint`       |
+| `ZoomBlur`        | `intensity`, `focus_radius`, `center`, `position` |
+| `Pixelate`        | `cell_size`           |
+| `GaussianBlur`    | `downsample_count`, `passes` |
+| `WhiteNoise`      | `intensity`, `animation` |
+| `Glow`            | `intensity`, `glow_radius`, `glow_quality`, `glow_gamma`, `glow_alpha` |
+| `Vignette`        | `vignette_edges`, `vignette_sharpness` |
+| `Contrast`        | `intensity`, `brightness` |
+| `LinearBlur`      | `linear_blur_vector` |
+| `Colourise`       | `intensity`, `color`, `tint` |
 
 #### General Math
 #### `ilerp(start, end, value)`
