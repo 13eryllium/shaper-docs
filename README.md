@@ -185,6 +185,91 @@ Creates an independent twerp that waits for the parent to finish before starting
 | `twerp_mode` | Animation mode: "once", "loop", or "patrol" |
 | `delay` | Delay before new animation starts (optional, default: 0) |
 
+#### Collision Detection
+#### `point_in_rectangle()`
+Check if a point is within a rectangular area
+
+#### `get_player(player)`
+Retrieves player data based on the specified parameter.
+
+| Parameter | Description |
+|-----------|-------------|
+| `player` | Can be "nearest" (closest player), "all" (array of all players), or a number (0-3) for specific player |
+
+Returns a struct (or array of structs for "all") with the following properties:
+
+| Property | Description |
+|----------|-------------|
+| `x` | Player's x coordinate |
+| `y` | Player's y coordinate |
+| `is_moving` | Boolean indicating if the player is currently moving |
+| `dashing` | Boolean indicating if the player is actively dashing |
+| `color` | Player's main color |
+| `shape` | Player's shape index |
+| `rect` | Player's collision rectangle array |
+| `horizontal` | Player's horizontal input/direction (-1, 1) |
+| `vertical` | Player's vertical input/direction (-1, 1) |
+| `dead` | Boolean indicating if the player is dead |
+| `body` | Reference to the actual player object instance |
+
+#### `get_player_rects()`
+Returns an array of all player collision rectangles.
+
+#### `players_in_collison(collision)`
+Takes a collision array and returns corresponding player data.
+
+| Parameter | Description |
+|-----------|-------------|
+| `collision` | Array of boolean collision results |
+
+Returns an array where `true` collision indices contain player structs, `false` indices contain `undefined`.
+
+#### `hit_players_in_points(points)`
+Checks collision between players and collision points, causing damage to the players inside the points.
+
+| Parameter | Description |
+|-----------|-------------|
+| `points` | Collision points struct created by `create_collision_points()` |
+
+#### `create_collision_points(x1, y1, width, height, angle)`
+Creates a rotated rectangle collision area with corner points.
+
+| Parameter | Description |
+|-----------|-------------|
+| `x1` | Center x coordinate |
+| `y1` | Center y coordinate |
+| `width` | Rectangle width |
+| `height` | Rectangle height |
+| `angle` | Rotation angle in degrees |
+
+Returns a struct with `corner1-4` arrays, `center` array, `width`, `height`, and `angle`.
+
+#### `check_collision_points(array_or_rect_array, collision_points)`
+Tests collision between rectangles and rotated collision points.
+
+| Parameter | Description |
+|-----------|-------------|
+| `array_or_rect_array` | Single rectangle array [x1, y1, x2, y2] or array of rectangles |
+| `collision_points` | Collision points struct from `create_collision_points()` |
+
+Returns boolean result for single rectangle or array of boolean results for multiple rectangles.
+
+#### `check_single_rectangle_collision(rect, collision_points)`
+Internal function that performs collision detection between a single rectangle and collision points.
+
+| Parameter | Description |
+|-----------|-------------|
+| `rect` | Rectangle array [x1, y1, x2, y2] |
+| `collision_points` | Collision points struct |
+
+#### `debug_draw_collision_points(collision_points, color)`
+Draws the collision area outline for debugging purposes.
+
+| Parameter | Description |
+|-----------|-------------|
+| `collision_points` | Collision points struct to visualize |
+| `color` | Color to draw the outline |
+
 ### Drawing Functions
 
 #### `sprite_get_width()`
