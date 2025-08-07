@@ -55,6 +55,8 @@ You reference a sprite by doing `sprite(yourspritename)`
 
 The editor will automatically convert sprites in the folder into usable sprites for dropdown, so if you have a sprite in your `spawn_params`, you could use `sprite(spawn_params.sprite)`
 
+By default, you have `square` and `circle` (1024x1024 images of the named shapes).
+
 ## Available Events
 
 Shaper allows you to access the following GM events:
@@ -614,6 +616,7 @@ Logs a string to the ingame console.
 ### Game-Specific Constants
 - `level_color` - The current level's theme color
 - `dt` (delta_time) - Time elapsed since the last frame (delta_time / 1000)
+- `player_sprites` - A struct containing player sprites with `inside`, `outside`, and `outline` values
 
 ### Color Constants
 
