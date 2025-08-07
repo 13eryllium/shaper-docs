@@ -112,12 +112,66 @@ Advanced tweening function with extended features for animations.
 
 | Parameter | Description |
 |-----------|-------------|
-| `type` | The easing type (e.g., "Linear", "Quad", "Cubic", etc.) |
+| `type` | The easing type (e.g., "Linear", "EaseOutQuad", "EaseInCubic", etc.) |
 | `start_val` | Starting value of the animation |
 | `end_val` | Ending value of the animation |
 | `duration` | Duration of the animation in seconds |
 | `twerp_mode` | Animation mode: "once", "loop", or "patrol" |
 | `delay` | Delay before animation starts (optional, default: 0) |
+
+| Easing Type | Description |
+|-------------|-------------|
+| `Linear` | Constant speed interpolation |
+| **Back** |
+| `EaseInBack` | Starts backward then accelerates forward |
+| `EaseOutBack` | Overshoots then settles back |
+| `EaseInOutBack` | Combines EaseInBack and EaseOutBack |
+| `EaseInBackHard` | Intense backward start |
+| `EaseOutBackHard` | Intense overshoot |
+| `EaseInOutBackHard` | Combines hard back easing |
+| `EaseInBackSoft` | Gentle backward start |
+| `EaseOutBackSoft` | Gentle overshoot |
+| `EaseInOutBackSoft` | Combines soft back easing |
+| **Bounce** |
+| `EaseInBounce` | Bouncing effect at start |
+| `EaseOutBounce` | Bouncing effect at end |
+| `EaseInOutBounce` | Combines EaseInBounce and EaseOutBounce |
+| **Circle** |
+| `EaseInCircle` | Circular acceleration |
+| `EaseOutCircle` | Circular deceleration |
+| `EaseInOutCircle` | Combines EaseInCircle and EaseOutCircle |
+| **Cubic** |
+| `EaseInCubic` | Cubic acceleration |
+| `EaseOutCubic` | Cubic deceleration |
+| `EaseInOutCubic` | Combines EaseInCubic and EaseOutCubic |
+| **Elastic** |
+| `EaseInElastic` | Elastic oscillation at start |
+| `EaseOutElastic` | Elastic oscillation at end |
+| `EaseInOutElastic` | Combines EaseInElastic and EaseOutElastic |
+| **Jelly** |
+| `EaseInJelly` | Jelly-like wobble at start |
+| `EaseOutJelly` | Jelly-like wobble at end |
+| `EaseInOutJelly` | Combines EaseInJelly and EaseOutJelly |
+| **Expo** |
+| `EaseInExpo` | Exponential acceleration |
+| `EaseOutExpo` | Exponential deceleration |
+| `EaseInOutExpo` | Combines EaseInExpo and EaseOutExpo |
+| **Quad** |
+| `EaseInQuad` | Quadratic acceleration |
+| `EaseOutQuad` | Quadratic deceleration |
+| `EaseInOutQuad` | Combines EaseInQuad and EaseOutQuad |
+| **Quart** |
+| `EaseInQuart` | Quartic acceleration |
+| `EaseOutQuart` | Quartic deceleration |
+| `EaseInOutQuart` | Combines EaseInQuart and EaseOutQuart |
+| **Quint** |
+| `EaseInQuint` | Quintic acceleration |
+| `EaseOutQuint` | Quintic deceleration |
+| `EaseInOutQuint` | Combines EaseInQuint and EaseOutQuint |
+| **Sine** |
+| `EaseInSine` | Sinusoidal acceleration |
+| `EaseOutSine` | Sinusoidal deceleration |
+| `EaseInOutSine` | Sinusoidal acceleration and deceleration |
 
 #### `twerp_process(twerp_asset)`
 Updates and returns the current value of the twerp asset.
