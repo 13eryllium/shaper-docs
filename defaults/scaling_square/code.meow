@@ -1,4 +1,4 @@
--- this is the object template
+-- scaling square object (fun!)
 create = fun(spawn_params) {
     -- set object variables
     self.image_xscale = 1
@@ -13,7 +13,8 @@ create = fun(spawn_params) {
 	self.width = eval(spawn_params.width)
 	self.angle = eval(spawn_params.angle)
 	self.rotation_speed = eval(spawn_params.rot_speed)
-	self.scale_speed = eval(spawn_params.scale_speed) / 10 
+	self.scale_speed = eval(spawn_params.scale_speed) / 10
+	self.scale_speed_inc = eval(spawn_params.scale_speed_inc) / 10
 	self.intro_twerp_type = spawn_params.warn_ttype 
 	
 	-- other variables
@@ -31,7 +32,7 @@ create = fun(spawn_params) {
 step = fun() {
 	if twerp_has_finished(self.intro_twerp) {
 		self.distance += self.scale_speed
-		self.scale_speed += 0.1
+		self.scale_speed += self.scale_speed_inc
 
 		self.side_length = 2 * self.distance
 
