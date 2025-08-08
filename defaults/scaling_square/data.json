@@ -47,9 +47,16 @@
 		},
 		{
 			"paramType": "string",
-			"paramName": "scale speed increment",
+			"paramName": "scale speed",
 			"paramDefault": "1",
 			"paramInt": "scale_speed",
+			"paramDropdown": -1
+		},
+		{
+			"paramType": "string",
+			"paramName": "scale speed increment",
+			"paramDefault": "1",
+			"paramInt": "scale_speed_inc",
 			"paramDropdown": -1
 		},
 		{
