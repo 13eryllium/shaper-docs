@@ -10,7 +10,7 @@ create = fun(spawn_params) {
     self.image_blend = #FFFFFF
     self.image_alpha = 1
 
-    -- this timer is to let you delete the 
+    -- this timer is to let you delete the object
     self.timer = 0
 }
 
@@ -26,3 +26,4 @@ step = fun() {
 draw = fun() {
     -- draw stuff here.
 }
+
