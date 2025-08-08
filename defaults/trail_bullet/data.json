@@ -1,0 +1,130 @@
+{
+    "attackName": "Trail Bullet",
+    "attackInternal": "trail_bullet",
+    "appearInPalette": true,
+    "attackParams": [
+        {
+            "paramType": "string",
+            "paramName": "x",
+            "paramDefault": "1920",
+            "paramInt": "x",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "string",
+            "paramName": "y",
+            "paramDefault": "random(0,1080)",
+            "paramInt": "y",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "string",
+            "paramName": "angle",
+            "paramDefault": "180",
+            "paramInt": "angle",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "string",
+            "paramName": "speed",
+            "paramDefault": "5",
+            "paramInt": "spd",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "string",
+            "paramName": "curve",
+            "paramDefault": "0",
+            "paramInt": "curve",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "string",
+            "paramName": "rotation speed",
+            "paramDefault": "-5",
+            "paramInt": "rot_speed",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "string",
+            "paramName": "size",
+            "paramDefault": "48",
+            "paramInt": "size",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "sprite",
+            "paramName": "sprite",
+            "paramDefault": "square",
+            "paramInt": "sprite",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "dropdown",
+            "paramName": "app pos",
+            "paramDefault": "over",
+            "paramInt": "app_pos",
+            "paramDropdown": [
+                "over",
+                "under",
+                "none"
+            ]
+        },
+        {
+            "paramType": "string",
+            "paramName": "app scale",
+            "paramDefault": "2",
+            "paramInt": "app_scale",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "string",
+            "paramName": "app duration",
+            "paramDefault": "500",
+            "paramInt": "app_duration",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "sprite",
+            "paramName": "trail sprite",
+            "paramDefault": "circle",
+            "paramInt": "trail_sprite",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "string",
+            "paramName": "trail delay",
+            "paramDefault": "25",
+            "paramInt": "trail_delay",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "string",
+            "paramName": "trail lifetime",
+            "paramDefault": "500",
+            "paramInt": "trail_lifetime",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "string",
+            "paramName": "trail rotation speed",
+            "paramDefault": "0",
+            "paramInt": "trail_rot_speed",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "string",
+            "paramName": "trail shake",
+            "paramDefault": "3",
+            "paramInt": "trail_shake",
+            "paramDropdown": -1
+        },
+        {
+            "paramType": "string",
+            "paramName": "trail scale",
+            "paramDefault": "0.8",
+            "paramInt": "trail_scale",
+            "paramDropdown": -1
+        }
+    ]
+}
