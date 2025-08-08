@@ -26,9 +26,3 @@ step = fun() {
 draw = fun() {
     -- draw stuff here.
 }
-
--- other events include:
--- clean_up > runs when you use kill(), lets you clean up stuff
--- begin_step > runs before the step event
--- end_step > runs after the step event
--- draw_end > draws over the draw event
