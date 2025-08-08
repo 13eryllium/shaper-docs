@@ -42,9 +42,9 @@ For numeric parameters (positions, dimensions, etc.), use `eval()` to convert st
 
 ```javascript
 create = fun(spawn_params) {
-  // Use self to set object variables instead of global variables
+  -- Use self to set object variables instead of global variables
   self.x = eval(spawn_params.x)
-  // This evaluates the spawn_params.x string into a number
+  -- This evaluates the spawn_params.x string into a number
 }
 ```
 
@@ -74,15 +74,15 @@ Define events in your **code.meow** file using the following syntax:
 ### Basic Event Structure
 ```javascript
 create = fun(spawn_params) {
-  // Initialization logic here
+  -- Initialization logic here
 }
 
 step = fun() {
-  // Main game logic
+  -- Main game logic
 }
 
 draw = fun() {
-  // Sprite rendering
+  -- Sprite rendering
 }
 ```
 
