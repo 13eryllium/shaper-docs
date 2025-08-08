@@ -1,0 +1,63 @@
+{
+	"attackName": "Scaling Square",
+	"attackInternal": "scaling_square",
+	"appearInPalette": true,
+	"attackParams": [
+		{
+			"paramType": "string",
+			"paramName": "x",
+			"paramDefault": "random(0,1920)",
+			"paramInt": "x",
+			"paramDropdown": -1
+		},
+		{
+			"paramType": "string",
+			"paramName": "y",
+			"paramDefault": "random(0,1080)",
+			"paramInt": "y",
+			"paramDropdown": -1
+		},
+		{
+			"paramType": "string",
+			"paramName": "warn",
+			"paramDefault": "2000",
+			"paramInt": "warn",
+			"paramDropdown": -1
+		},
+		{
+			"paramType": "string",
+			"paramName": "width",
+			"paramDefault": "25",
+			"paramInt": "width",
+			"paramDropdown": -1
+		},
+		{
+			"paramType": "string",
+			"paramName": "angle",
+			"paramDefault": "random(0,360)",
+			"paramInt": "angle",
+			"paramDropdown": -1
+		},
+		{
+			"paramType": "string",
+			"paramName": "rotation speed",
+			"paramDefault": "5",
+			"paramInt": "rot_speed",
+			"paramDropdown": -1
+		},
+		{
+			"paramType": "string",
+			"paramName": "scale speed increment",
+			"paramDefault": "1",
+			"paramInt": "scale_speed",
+			"paramDropdown": -1
+		},
+		{
+			"paramType": "string",
+			"paramName": "warn twerp type",
+			"paramDefault": "EaseOutExpo",
+			"paramInt": "warn_ttype",
+			"paramDropdown": -1
+		}
+	]
+}

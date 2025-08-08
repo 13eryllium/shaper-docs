@@ -1,0 +1,84 @@
+-- this is the object template
+create = fun(spawn_params) {
+    -- set object variables
+    self.image_xscale = 1
+    self.image_yscale = 1
+    self.image_blend = #FFFFFF
+    self.image_alpha = 1
+	
+	-- param variables
+	self.x = eval(spawn_params.x)
+    self.y = eval(spawn_params.y)
+	self.warn = real(spawn_params.warn) / 1000
+	self.width = eval(spawn_params.width)
+	self.angle = eval(spawn_params.angle)
+	self.rotation_speed = eval(spawn_params.rot_speed)
+	self.scale_speed = eval(spawn_params.scale_speed) / 10 
+	self.intro_twerp_type = spawn_params.warn_ttype 
+	
+	-- other variables
+	self.distance = self.width / 2
+	self.square = sprite("square")
+	self.scale = self.width / sprite_get_width(self.square)
+	self.side_length = 0
+	self.collision_points = []
+	self.room_rect = [0, 0, 1920, 1080]
+	self.intro_twerp = twerp_ext(self.intro_twerp_type, 0, self.width * 2, self.warn, "once")
+	self.timer = 0;
+	self.duration = 500
+}
+
+step = fun() {
+	if twerp_has_finished(self.intro_twerp) {
+		self.distance += self.scale_speed
+		self.scale_speed += 0.1
+
+		self.side_length = 2 * self.distance
+
+		self.angle += self.rotation_speed * (dt / 100)
+		self.timer += dt
+	}
+}
+
+draw = fun() {
+	if twerp_has_finished(self.intro_twerp) {
+		let i = 0
+		let collision_points = []
+		let touching_room = false
+
+		while (i < 4) {
+			let t_angle = self.angle + i * 90
+			let _x = self.x + lengthdir_x(self.distance, t_angle)
+			let _y = self.y + lengthdir_y(self.distance, t_angle)
+			let sprite_width = sprite_get_width(self.square)
+			let t_scale = (self.side_length + self.width) / sprite_width
+			let per = self.timer / self.duration
+
+			per = min(per, 1)
+
+			let blend = merge_color(c_white, level_color, per)
+
+			draw_sprite_ext(self.square, 0, _x, _y, self.scale, t_scale, t_angle, blend, 1)
+			let width = sprite_width * self.scale
+			let height = sprite_width * ((self.side_length + self.width) / sprite_width)
+
+			let points = create_collision_points(_x, _y, width, height, t_angle)
+
+			if check_collision_points(self.room_rect, points) {
+				touching_room = true
+			}
+
+			hit_players_in_points(points)
+
+			i += 1
+		}
+
+		if !touching_room {
+			kill()
+		}
+	} else {
+		let scale = twerp_process(self.intro_twerp) / sprite_get_width(self.square)
+
+		draw_sprite_ext(self.square, 0, self.x, self.y, scale, scale, self.angle, level_color, twerp_percent(self.intro_twerp) * 0.2)
+	}
+}
