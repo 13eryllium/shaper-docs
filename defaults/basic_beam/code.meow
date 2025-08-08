@@ -11,7 +11,8 @@
 
 -- this is the basic code for a Shaper attack
 -- A basic beam attack
--- fti twerp_ext may be a bad practice. using lots of objects with twerp_ext can be computationally expensive.
+-- fyi twerp_ext may be a bad practice. using lots of objects with twerp_ext can be computationally expensive.
+-- fyi again this has no collision :p 
 
 create = fun(spawn_params) {
 
@@ -130,3 +131,4 @@ draw = fun() {
     draw_self()
     draw_sprite_anchored_ext(self.sprite_index, 0, self.draw_x, self.draw_y, self.active_xscale, self.image_yscale, self.image_angle, self.image_blend, 1, 0, 0.5)
 }
+
