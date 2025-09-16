@@ -73,7 +73,7 @@ Define events in your **code.meow** file using the following syntax:
 
 ### Basic Event Structure
 ```javascript
-create = fun(spawn_params) {
+create = fun(spawn_params, param_map) {
   -- Initialization logic here
 }
 
