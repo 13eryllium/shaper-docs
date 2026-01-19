@@ -688,6 +688,16 @@ Blends two colors together with a specified ratio.
 - `distance_to_object()` - Calculate distance to another object
 - `angle_difference()` - Calculate the difference between two angles
 
+- `midpoint(x1, y1, x2, y2)` - Calculate the midpoint between two points
+| Parameter     | Description |
+|---------------|-------------|
+| `x1` | Point 1 X |
+| `y1` | Point 1 Y |
+| `x2` | Point 2 X |
+| `y2` | Point 2 Y |
+
+Returns an array containing the midpoint `[x, y]`.
+
 ### Effects
 
 #### `effect_layer_set(slot, effect_name)`  
