@@ -319,7 +319,7 @@ Creates a rotated rectangle collision area with corner points.
 | `height` | Rectangle height |
 | `angle` | Rotation angle in degrees |
 
-Returns a struct with `corner1-4` arrays, `center` array, `width`, `height`, and `angle`.
+Returns a struct with `corner1-4` arrays `[x, y]`, `center` array, `width`, `height`, and `angle`.
 
 #### `create_collision_points_anchored(x1, y1, width, height, angle, xoff, yoff)`
 Creates a rotated rectangle collision area with corner points, anchored at a certain point of the rectangle.
@@ -334,7 +334,7 @@ Creates a rotated rectangle collision area with corner points, anchored at a cer
 | `xoff` | The horizontal anchor point (percentage) of the rectangle (0 is left, 1 is right, 0.5 is center) |
 | `yoff` | The vertical anchor point (percentage) of the rectangle (0 is top, 1 is bottom, 0.5 is center)|
 
-Returns a struct with `corner1-4` arrays, `center` array, `width`, `height`, and `angle`.
+Returns a struct with `corner1-4` arrays `[x, y]`, `center` array, `width`, `height`, and `angle`.
 
 #### `check_collision_points(array_or_rect_array, collision_points)`
 Tests collision between rectangles and rotated collision points.
