@@ -399,6 +399,51 @@ Gets the width of a given sprite
 #### `sprite_get_height()`
 Gets the height of a given sprite
 
+#### `draw_circle()`
+Draws a circle
+
+#### `draw_circle_color()`
+Draws a gradient circle
+
+#### `draw_rectangle()`
+Draws a rectangle
+
+#### `draw_rectangle_color()`
+Draws a gradient rectangle
+
+#### `draw_line()`
+Draws a line
+
+#### `draw_line_width()`
+Draws a line with width
+
+#### `draw_set_color()`
+Sets the color for most drawing operations
+
+#### `draw_get_color()`
+Gets the color for most drawing operations
+
+#### `draw_set_alpha()`
+Sets the alpha for most drawing operations
+
+#### `draw_get_alpha()`
+Gets the alpha for most drawing operations
+
+#### `draw_dashed_line(x1, y1, x2, y2, dash_length, gap_length, thickness, line_color, [alpha])`
+Draws a dashed line
+
+| Parameter | Description |
+|-----------|-------------|
+| `x1` | The line's starting x |
+| `y1` | The line's starting y |
+| `x2` | The line's ending x |
+| `y2` | The line's ending y |
+| `dash_length` | The length of the dashes |
+| `gap_length` | The length of the gap between the dashes |
+| `thickness` | The width of the line |
+| `line_color` | The color of the line |
+| `alpha` | The alpha of the line (default `1`) |
+
 #### `draw_self()`
 Draws the object's current sprite at its position.
 
