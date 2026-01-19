@@ -362,6 +362,17 @@ Draws the collision area outline for debugging purposes.
 | `collision_points` | Collision points struct to visualize |
 | `color` | Color to draw the outline |
 
+
+#### `point_clamp(points, position)`
+Clamps an array position into a set of points.
+
+| Parameter | Description |
+|-----------|-------------|
+| `points` | Collision points struct from `create_collision_points()` |
+| `position` | X and Y array `[0, 0]` |
+
+Returns an array of the clamped position `[0, 0]`.
+
 ### Drawing Functions
 
 #### `sprite_get_width()`
