@@ -373,6 +373,24 @@ Clamps an array position into a set of points.
 
 Returns an array of the clamped position `[0, 0]`.
 
+#### `set_player_position(player, x, y)`
+Sets the position of a player
+
+| Parameter | Description |
+|-----------|-------------|
+| `player` | The player number (0-3) |
+| `x` | X position in world |
+| `y` | Y position in world |
+
+#### `get_player_position(player)`
+Gets the position of a player
+
+| Parameter | Description |
+|-----------|-------------|
+| `player` | The player number (0-3) |
+
+Returns an array of the given player's position `[0, 0]`.
+
 ### Drawing Functions
 
 #### `sprite_get_width()`
@@ -753,6 +771,7 @@ Logs an error to the ingame console.
 - `level_color` - The current level's theme color
 - `delta_time` (delta_time) - Time elapsed since the last frame (delta_time / 1000)
 - `player_sprites` - A struct containing player sprites with `inside`, `outside`, and `outline` values
+- `player_count` - The amount of players (1-4)
 
 ### Number Constants
 - `pi` - 3.141592653589793280
