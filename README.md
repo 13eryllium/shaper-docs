@@ -4,18 +4,27 @@
 
 ## Overview
 
-Shaper uses two main files to define attack patterns and object behaviors:
+Shaper uses two main files to define attack patterns and object behaviors, as well as a few extra files for :
 
 - **`code.meow`** - Contains the logic for your attack patterns and object behaviors
 - **`data.json`** - Defines attack metadata and spawn parameters
 
-### File Structure
+### Level Structure
 
-Attacks are stored in: `%localappdata%/thirteenE/Shaper/attacks/your_attack/`
+Every level has the following:
+- `level.json` - The level file, containing attacks and metadata information
+- `song.ogg` - The song that plays throughout the level
+- `attacks/` - A folder for all your level's attacks
+
+### Attack Structure
+
+Attacks are stored in: `%localappdata%/thirteenE/Shaper/tracks/your_level/attacks/`
 
 Each attack folder must include:
 - `data.json` - Attack configuration and parameters
 - `code.meow` - Behavior logic and event handlers
+- `attack_icon.png` - The timeline icon for the attack (optional)
+- `sprites/` - A folder for creating attack specific sprites that are accessed with the `my_sprites` variable in the object's create function
 
 ### data.json Structure
 
@@ -30,26 +39,39 @@ The `data.json` file configures your attack with the following properties:
 
 Each parameter in the `attackParams` array contains:
 
-- `paramType` - Parameter type: `string`, `dropdown`, `sprite`, or `boolean` (currently unused)
+- `paramType` - Parameter type: `string`, `dropdown`, `sprite`, or `boolean`
+    Setting this can change your param's suggestions.
+    Dropdown sets the suggestions to `paramDropdown`.
+    Sprite sets the suggestions to a list of all the sprites in your level's `sprites/` folder.
+    Boolean sets the suggestions to `true` or `false`
+&nbsp;
+
 - `paramName` - Display name for the parameter (currently unused)
 - `paramDefault` - Default value (always stored as string)
 - `paramInt` - Internal name used in `code.meow`
-- `paramDropdown` - Array of dropdown options if `paramType` is `dropdown`, otherwise `-1` (currently unused)
+- `paramDropdown` - Array of dropdown options if `paramType` is `dropdown`, otherwise `-1`
+- `paramSuggestions` - Array of suggestions that pop up like `paramDropdown` in the console (optional)
+    To have your suggestions be the Twerp easing modes, use `EASINGS` (string) as your paramSuggestions.
 
 ### Using Parameters in Code
 
 For numeric parameters (positions, dimensions, etc.), use `eval()` to convert string values:
 
 ```javascript
-create = fun(spawn_params) {
+create = fun(spawn_params, param_map, my_sprites) {
   -- Use self to set object variables instead of global variables
+  -- param_map is mostly used with instantiate(), otherwise you will never use it.
+  -- my_sprites is how you access your attack specific sprites
+
+  self.sprite = my_sprites.sprite_name
   self.x = eval(spawn_params.x)
+
   -- This evaluates the spawn_params.x string into a number
 }
 ```
 
 ### Sprites
-You can add a sprite in  `%localappdata%/thirteenE/Shaper/sprites/yourspritename.png`
+You can add a sprite in  `%localappdata%/thirteenE/Shaper/tracks/your_track/your_level/yourspritename.png`
 
 You reference a sprite by doing `sprite(yourspritename)`
 
@@ -73,7 +95,7 @@ Define events in your **code.meow** file using the following syntax:
 
 ### Basic Event Structure
 ```javascript
-create = fun(spawn_params, param_map) {
+create = fun(spawn_params, param_map, my_sprites) {
   -- Initialization logic here
 }
 
@@ -85,8 +107,6 @@ draw = fun() {
   -- Sprite rendering
 }
 ```
-
-These three events are likely to be used in every one of your attacks.
 
 ---
 
@@ -267,6 +287,7 @@ Returns a struct (or array of structs for "all") with the following properties:
 | `vertical` | Player's vertical input/direction (-1, 1) |
 | `dead` | Boolean indicating if the player is dead |
 | `body` | Reference to the actual player object instance |
+| `number` | The player's index in game (0-3) |
 
 #### `get_player_rects()`
 Returns an array of all player collision rectangles.
@@ -297,6 +318,21 @@ Creates a rotated rectangle collision area with corner points.
 | `width` | Rectangle width |
 | `height` | Rectangle height |
 | `angle` | Rotation angle in degrees |
+
+Returns a struct with `corner1-4` arrays, `center` array, `width`, `height`, and `angle`.
+
+#### `create_collision_points_anchored(x1, y1, width, height, angle, xoff, yoff)`
+Creates a rotated rectangle collision area with corner points, anchored at a certain point of the rectangle.
+
+| Parameter | Description |
+|-----------|-------------|
+| `x1` | Center x coordinate |
+| `y1` | Center y coordinate |
+| `width` | Rectangle width |
+| `height` | Rectangle height |
+| `angle` | Rotation angle in degrees |
+| `xoff` | The horizontal anchor point (percentage) of the rectangle (0 is left, 1 is right, 0.5 is center) |
+| `yoff` | The vertical anchor point (percentage) of the rectangle (0 is top, 1 is bottom, 0.5 is center)|
 
 Returns a struct with `corner1-4` arrays, `center` array, `width`, `height`, and `angle`.
 
@@ -340,8 +376,25 @@ Draws the object's current sprite at its position.
 #### `draw_sprite_ext()`
 Enhanced sprite drawing with transformation options.
 
-#### [`draw_sprite_anchored_ext()`](https://github.com/13eryllium/gml-scripts?tab=readme-ov-file#draw_sprite_anchored_ext)
+#### [`draw_sprite_anchored_ext(sprite, subimage, x, y, xscale, yscale, angle, blend, alpha, xoff, yoff)`](https://github.com/13eryllium/gml-scripts?tab=readme-ov-file#draw_sprite_anchored_ext)
 Draws sprites with custom anchor points.
+
+#### `draw_sprite_fog(sprite, subimg, _x, _y, xscale, yscale, rotation, blend, fog_blend, alpha, fog_alpha)`
+Draws sprites with an optional completely solid color overlay.
+
+| Parameter | Description |
+|-----------|-------------|
+| `sprite` | The sprite to draw |
+| `subimage` | The frame of the image to draw |
+| `x` | The x coordinate of the image |
+| `y` | The y coordinate of the image |
+| `xscale` | The width of the sprite |
+| `yscale` | The height of the sprite |
+| `rotation` | The angle of the sprite |
+| `blend` | The tint of the sprite |
+| `fog_blend` | The color of the solid overlay |
+| `alpha` | The alpha of the image |
+| `fog_alpha` | The alpha of the solid overlay |
 
 #### `draw_nexa_ext(x, y, text, c1, c2, c3, c4, xscale, yscale, angle, alpha, weight, halign, valign)`
 Advanced text rendering with full transformation and color gradient support.
@@ -395,13 +448,14 @@ Randomly selects one value from the provided arguments.
 #### `kill()`
 Destroys the object (equivalent to instance_destroy).
 
-#### `instantiate(object, params)`
+#### `instantiate(object, params, param_map)`
 Creates an object (equivalent to instance_create).
 
 | Parameter | Description |
 |-----------|-------------|
 | `object` | The string of the object name to spawn (attack_internal) |
 | `params` | The params (spawn_params) to instantiate the object with |
+| `param_map` | A set of params that the child object can access (set in the parent) |
 
 #### `offscreen(sprite)`
 Checks if a sprite is outside the visible screen area.
@@ -549,8 +603,8 @@ Blends two colors together with a specified ratio.
 - `dsin()` - Sine using degrees
 - `sin()` - Sine using radians
 - `cos()` - Cosine using radians
-- `deg_to_rad()` - Convert degrees to radians
-- `rad_to_deg()` - Convert radians to degrees
+- `degtorad()` - Convert degrees to radians
+- `radtodeg()` - Convert radians to degrees
 
 #### Vector Math
 - `lengthdir_x()` - Get X component of a vector from length and direction
@@ -639,10 +693,27 @@ Returns 0 if the calculation would result in `NaN` (e.g., when `a == b`).
 #### Array Functions
 - `array_length()` - Get the length of an array
 - `array_push()` - Add an element to the end of an array
+- `array_create()` - Creates an array
+- `array_delete()` - Deletes a certain amount of elements from an array at a certain position
+- `array_resize()` - Resizes an array to a new size
 
 #### Debug Functions
-#### `log(data)`
+#### `debug_log(data)`
 Logs a string to the ingame console.
+
+| Parameter | Description |
+|-----------|-------------|
+| `data` | The thing to log |
+
+#### `debug_log_warning(data)`
+Logs a warning to the ingame console.
+
+| Parameter | Description |
+|-----------|-------------|
+| `data` | The thing to log |
+
+#### `debug_log_error(data)`
+Logs an error to the ingame console.
 
 | Parameter | Description |
 |-----------|-------------|
@@ -653,8 +724,8 @@ Logs a string to the ingame console.
 ## Constants
 
 ### Room Dimensions
-- `room_width` - The width of the current room
-- `room_height` - The height of the current room
+- `room_width` - 1920
+- `room_height` - 1080
 
 ### Text Alignment
 #### Horizontal Alignment
@@ -669,8 +740,11 @@ Logs a string to the ingame console.
 
 ### Game-Specific Constants
 - `level_color` - The current level's theme color
-- `dt` (delta_time) - Time elapsed since the last frame (delta_time / 1000)
+- `delta_time` (delta_time) - Time elapsed since the last frame (delta_time / 1000)
 - `player_sprites` - A struct containing player sprites with `inside`, `outside`, and `outline` values
+
+### Number Constants
+- `pi` - 3.141592653589793280
 
 ### Color Constants
 
