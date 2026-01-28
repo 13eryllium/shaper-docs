@@ -694,6 +694,7 @@ Blends two colors together with a specified ratio.
 - `angle_difference()` - Calculate the difference between two angles
 
 - `midpoint(x1, y1, x2, y2)` - Calculate the midpoint between two points
+
 | Parameter     | Description |
 |---------------|-------------|
 | `x1` | Point 1 X |
