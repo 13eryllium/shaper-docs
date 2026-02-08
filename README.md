@@ -449,6 +449,22 @@ Draws a dashed line
 | `line_color` | The color of the line |
 | `alpha` | The alpha of the line (default `1`) |
 
+#### `draw_dashed_line_offset(x1, y1, x2, y2, dash_length, gap_length, thickness, line_color, offset, alpha)`
+Draws a dashed line between two points with a configurable dash offset.
+
+| Parameter | Description |
+|-----------|-------------|
+| `x1` | The line's starting x |
+| `y1` | The line's starting y |
+| `x2` | The line's ending x |
+| `y2` | The line's ending y |
+| `dash_length` | Length of each dash segment |
+| `gap_length` | Length of the gap between dashes |
+| `thickness` | Width of the line |
+| `line_color` | Color of the dashed line |
+| `offset` | Offset applied to the dash pattern along the line |
+| `alpha` | Alpha transparency of the line |
+
 #### `draw_self()`
 Draws the object's current sprite at its position.
 
@@ -474,6 +490,24 @@ Draws sprites with an optional completely solid color overlay.
 | `fog_blend` | The color of the solid overlay |
 | `alpha` | The alpha of the image |
 | `fog_alpha` | The alpha of the solid overlay |
+
+#### `draw_sprite_skew_ext(sprite, index, x, y, xscale, yscale, angle, angle_sin, tint, alpha, hskew, vskew)`
+Draws a sprite with rotation, scaling, and horizontal/vertical skew applied.
+
+| Parameter | Description |
+|-----------|-------------|
+| `sprite` | The sprite to draw |
+| `index` | The sprite subimage index |
+| `x` | X position to draw the sprite |
+| `y` | Y position to draw the sprite |
+| `xscale` | Horizontal scale of the sprite |
+| `yscale` | Vertical scale of the sprite |
+| `angle` | Rotation angle in degrees |
+| `angle_sin` | Rotation angle in degrees (used to calculate sine internally) |
+| `tint` | Color tint applied to the sprite |
+| `alpha` | Alpha transparency of the sprite |
+| `hskew` | Horizontal skew amount |
+| `vskew` | Vertical skew amount |
 
 #### `draw_nexa_ext(x, y, text, c1, c2, c3, c4, xscale, yscale, angle, alpha, weight, halign, valign)`
 Advanced text rendering with full transformation and color gradient support.
