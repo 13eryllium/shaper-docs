@@ -15,6 +15,7 @@ Every level has the following:
 - `level.json` - The level file, containing attacks and metadata information
 - `song.ogg` - The song that plays throughout the level
 - `attacks/` - A folder for all your level's attacks
+- `sprites/` - A folder for all your level's sprites
 
 ### Attack Structure
 
@@ -71,7 +72,7 @@ create = fun(spawn_params, param_map, my_sprites) {
 ```
 
 ### Sprites
-You can add a sprite in  `%localappdata%/thirteenE/Shaper/tracks/your_track/your_level/yourspritename.png`
+You can add a sprite in  `%localappdata%/thirteenE/Shaper/tracks/your_track/your_level/sprites/yourspritename.png`
 
 You reference a sprite by doing `sprite(yourspritename)`
 
