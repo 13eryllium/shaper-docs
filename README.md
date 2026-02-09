@@ -206,6 +206,13 @@ Updates and returns the current value of the twerp asset.
 |-----------|-------------|
 | `twerp_asset` | The twerp asset to process |
 
+#### `twerp_get(twerp_asset)`
+Returns the current value of the twerp asset.
+
+| Parameter | Description |
+|-----------|-------------|
+| `twerp_asset` | The twerp asset to return |
+
 #### `twerp_percent(twerp_asset)`
 Returns the current progress percentage (0.0 to 1.0) of the animation.
 
