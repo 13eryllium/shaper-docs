@@ -442,6 +442,15 @@ Sets the alpha for most drawing operations
 #### `draw_get_alpha()`
 Gets the alpha for most drawing operations
 
+
+#### `draw_dashed_line(color)`
+Sets the global color of the level (`level_color` constant).
+
+| Parameter | Description |
+|-----------|-------------|
+| `color` | The target color for the level |
+
+
 #### `draw_dashed_line(x1, y1, x2, y2, dash_length, gap_length, thickness, line_color, [alpha])`
 Draws a dashed line
 
@@ -871,7 +880,7 @@ Logs an error to the ingame console.
 - `fa_bottom` - Align text to the bottom
 
 ### Game-Specific Constants
-- `level_color` - The current level's theme color
+- `level_color` - The current level's theme color (set with `set_level_color`).
 - `delta_time` (delta_time) - Time elapsed since the last frame (delta_time / 1000)
 - `player_sprites` - A struct containing player sprites with `inside`, `outside`, and `outline` values
 - `player_count` - The amount of players (1-4)
