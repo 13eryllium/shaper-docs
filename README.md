@@ -324,7 +324,7 @@ Checks collision between players and collision points, causing damage to the pla
 | `damage` | Damage dealt (defaults to `1`) |
 | `not?` | Hit players outside of points instead of inside (defaults to `false`) |
 
-#### `hit_player(x, y, player, [damage])`
+#### `hit_player(x, y, player, [damage], [ignore?])`
 Hits a specified player regardless of if they have invincibility frames / are dashing.
 
 | Parameter | Description |
@@ -333,6 +333,7 @@ Hits a specified player regardless of if they have invincibility frames / are da
 | `y` | Y position of the damage source for knockback |
 | `player` | The player to target |
 | `damage` | Damage dealt (defaults to `1`) |
+| `ignore?` | Whether or not invincibility frames / dashing are ignored (defaults to `true`) |
 
 #### `create_collision_points(x1, y1, width, height, angle)`
 Creates a rotated rectangle collision area with corner points.
