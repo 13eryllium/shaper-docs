@@ -305,21 +305,34 @@ Returns a struct (or array of structs for "all") with the following properties:
 #### `get_player_rects()`
 Returns an array of all player collision rectangles.
 
-#### `players_in_collison(collision)`
+#### `players_in_collison(collision, [not?])`
 Takes a collision array and returns corresponding player data.
 
 | Parameter | Description |
 |-----------|-------------|
 | `collision` | Array of boolean collision results |
+| `not?` | Detect players outside of points instead of inside (defaults to `false`) |
 
 Returns an array where `true` collision indices contain player structs, `false` indices contain `undefined`.
 
-#### `hit_players_in_points(points)`
+#### `hit_players_in_points(points, [damage], [not?])`
 Checks collision between players and collision points, causing damage to the players inside the points.
 
 | Parameter | Description |
 |-----------|-------------|
 | `points` | Collision points struct created by `create_collision_points()` |
+| `damage` | Damage dealt (defaults to `1`) |
+| `not?` | Hit players outside of points instead of inside (defaults to `false`) |
+
+#### `hit_player(x, y, player, [damage])`
+Checks collision between players and collision points, causing damage to the players inside the points.
+
+| Parameter | Description |
+|-----------|-------------|
+| `x` | X position of the damage source for knockback |
+| `y` | Y position of the damage source for knockback |
+| `player` | The player to target |
+| `damage` | Damage dealt (defaults to `1`) |
 
 #### `create_collision_points(x1, y1, width, height, angle)`
 Creates a rotated rectangle collision area with corner points.
