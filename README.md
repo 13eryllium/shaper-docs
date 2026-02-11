@@ -325,7 +325,7 @@ Checks collision between players and collision points, causing damage to the pla
 | `not?` | Hit players outside of points instead of inside (defaults to `false`) |
 
 #### `hit_player(x, y, player, [damage])`
-Checks collision between players and collision points, causing damage to the players inside the points.
+Hits a specified player regardless of if they have invincibility frames / are dashing.
 
 | Parameter | Description |
 |-----------|-------------|
