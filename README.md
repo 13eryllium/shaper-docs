@@ -89,6 +89,7 @@ Shaper allows you to access the following GM events:
 | `create` | Triggered once when the object is first instantiated |
 | `step` | Main logic executed during each game step |
 | `draw` | Handles rendering and visual updates |
+| `draw_begin` | Same as draw, but draws before it |
 | `draw_end` | Same as draw, but draws over the player |
 
 ## Event Implementation
@@ -103,6 +104,10 @@ create = fun(spawn_params, param_map, my_sprites) {
 
 step = fun() {
   -- Main game logic
+}
+
+draw_begin = fun() {
+  -- Sprite rendering before the draw event
 }
 
 draw = fun() {
