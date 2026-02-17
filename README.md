@@ -592,6 +592,141 @@ Returns a random integer (equivalent to irandom_range).
 #### `choose()`
 Randomly selects one value from the provided arguments.
 
+### Camera Functions
+
+#### `camera_set_pos(x, y)`
+Sets the camera's position directly.
+
+| Parameter | Description |
+|-----------|-------------|
+| `x` | Target x coordinate |
+| `y` | Target y coordinate |
+
+#### `camera_set_shake(x, y)`
+Sets the camera's shake intensity.
+
+| Parameter | Description |
+|-----------|-------------|
+| `x` | Horizontal shake intensity |
+| `y` | Vertical shake intensity |
+
+#### `camera_kick_pos_angle(angle, force, duration)`
+Kicks the camera's position in a direction defined by an angle and force, then eases it back to its original position.
+
+| Parameter | Description |
+|-----------|-------------|
+| `angle` | Angle of the kick in degrees |
+| `force` | Distance of the kick |
+| `duration` | How long the camera takes to ease back |
+
+#### `camera_kick_pos_xy(xoff, yoff, duration)`
+Kicks the camera's position by an x/y offset, then eases it back.
+
+| Parameter | Description |
+|-----------|-------------|
+| `xoff` | Horizontal offset of the kick |
+| `yoff` | Vertical offset of the kick |
+| `duration` | How long the camera takes to ease back |
+
+#### `camera_kick_angle(angle, duration)`
+Kicks the camera's angle by the specified amount, then eases it back to its original angle.
+
+| Parameter | Description |
+|-----------|-------------|
+| `angle` | Angle to kick by in degrees |
+| `duration` | How long the camera takes to ease back |
+
+#### `camera_set_angle(angle)`
+Sets the camera's rotation directly.
+
+| Parameter | Description |
+|-----------|-------------|
+| `angle` | Target angle in degrees |
+
+#### `camera_kick_zoom(zoom, duration)`
+Kicks the camera's zoom toward the specified level, then eases it back.
+
+| Parameter | Description |
+|-----------|-------------|
+| `zoom` | Target zoom level for the kick |
+| `duration` | How long the camera takes to ease back |
+
+#### `camera_set_zoom(zoom)`
+Sets the camera's zoom level directly.
+
+| Parameter | Description |
+|-----------|-------------|
+| `zoom` | Target zoom level (`1` is default) |
+
+#### `camera_clear_tweens()`
+Removes all active camera tweens immediately.
+
+#### `camera_reset()`
+Resets the camera to its default state: centered position, no rotation, zoom of `1`, no shake, and all tweens and kick offsets cleared.
+
+#### `camera_tween(tween_name, tween_type, tween_mode, duration, props, [add_to_raw])`
+Creates a named tween that animates the camera toward target property values.
+
+| Parameter | Description |
+|-----------|-------------|
+| `tween_name` | A string identifier for this tween (used to reference or destroy it later) |
+| `tween_type` | The easing type (e.g. `"EaseOutQuad"`) |
+| `tween_mode` | Animation mode: `"once"`, `"loop"`, or `"patrol"` |
+| `duration` | Duration of the tween in seconds |
+| `props` | A struct with any of the following optional fields: `x`, `y`, `angle`, `zoom`. Any omitted fields will stay at their current values |
+| `add_to_raw` | If `true`, the tween's delta is added to `raw` values instead of replacing them on completion. Defaults to `false` |
+
+#### `camera_tween_ext(tween_name, tween_type, tween_mode, duration, start_props, end_props, [add_to_raw])`
+Like `camera_tween()`, but lets you explicitly define both the start and end values for each property.
+
+| Parameter | Description |
+|-----------|-------------|
+| `tween_name` | A string identifier for this tween |
+| `tween_type` | The easing type (e.g. `"EaseInCubic"`) |
+| `tween_mode` | Animation mode: `"once"`, `"loop"`, or `"patrol"` |
+| `duration` | Duration of the tween in seconds |
+| `start_props` | A struct defining starting values for any of: `x`, `y`, `angle`, `zoom` |
+| `end_props` | A struct defining ending values for the same properties |
+| `add_to_raw` | If `true`, the tween's delta is added to `raw` values on completion. Defaults to `false` |
+
+#### `camera_tween_destroy(tween_name)`
+Removes a specific named tween, stopping it immediately without snapping to its end value.
+
+| Parameter | Description |
+|-----------|-------------|
+| `tween_name` | The string identifier of the tween to remove |
+
+#### `camera_get_raw_pos()`
+Returns the camera's logical position, before shake and kick offsets are applied.
+
+Returns a struct with the following properties:
+
+| Property | Description |
+|----------|-------------|
+| `x` | Raw x position |
+| `y` | Raw y position |
+| `angle` | Raw angle |
+| `zoom` | Raw zoom level |
+
+#### `camera_get_real_pos()`
+Returns the camera's actual final position, including all shake, kick, and tween offsets.
+
+Returns a struct with the following properties:
+
+| Property | Description |
+|----------|-------------|
+| `x` | Final x position |
+| `y` | Final y position |
+| `angle` | Final angle |
+| `zoom` | Final zoom level |
+
+#### `camera_apply_camera(view_camera)`
+Applies the camera's current state to a GameMaker view camera, updating its position, size, and angle.
+
+| Parameter | Description |
+|-----------|-------------|
+| `view_camera` | The view camera to apply the state to |
+
 ### Object Control Functions
 
 #### `kill()`
