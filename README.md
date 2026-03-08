@@ -909,6 +909,75 @@ Blends two colors together with a specified ratio.
 
 Returns an array containing the midpoint `[x, y]`.
 
+Here's a documentation block for those functions:
+
+---
+
+### HorriFi Effects
+
+---
+
+#### `horrifi_bloom_set(enabled, radius, intensity, threshold)`
+Configures the bloom effect in one call.
+
+| Parameter   | Type    | Max | Description                              |
+|-------------|---------|-----|------------------------------------------|
+| `enabled`   | boolean | —   | Enables or disables bloom                |
+| `radius`    | number  | 32  | Spread radius of the bloom               |
+| `intensity` | number  | 1   | Brightness of the bloom                  |
+| `threshold` | number  | 1   | Luminance threshold before bloom applies |
+
+---
+
+#### `horrifi_chromaticab_set(enabled, strength)`
+Configures the chromatic aberration effect in one call.
+
+| Parameter  | Type    | Max | Description                          |
+|------------|---------|-----|--------------------------------------|
+| `enabled`  | boolean | —   | Enables or disables chromatic aberration |
+| `strength` | number  | 1   | Intensity of the color fringing      |
+
+---
+
+#### `horrifi_scanlines_set(enabled, strength)`
+Configures the scanlines effect in one call.
+
+| Parameter  | Type    | Max | Description                      |
+|------------|---------|-----|----------------------------------|
+| `enabled`  | boolean | —   | Enables or disables scanlines    |
+| `strength` | number  | 1   | Opacity of the scanline overlay  |
+
+---
+
+#### `horrifi_vhs_set(enabled, strength)`
+Configures the VHS distortion effect in one call.
+
+| Parameter  | Type    | Max | Description                        |
+|------------|---------|-----|------------------------------------|
+| `enabled`  | boolean | —   | Enables or disables VHS distortion |
+| `strength` | number  | 1   | Intensity of the VHS warping       |
+
+---
+
+#### `horrifi_vignette_set(enabled, strength, intensity)`
+Configures the vignette effect in one call.
+
+| Parameter   | Type    | Max | Description                          |
+|-------------|---------|-----|--------------------------------------|
+| `enabled`   | boolean | —   | Enables or disables the vignette     |
+| `strength`  | number  | 1   | Size of the vignette border          |
+| `intensity` | number  | 1   | Darkness of the vignette edges       |
+
+---
+
+#### `horrifi_noise_set(enabled, strength)`
+Configures the noise/grain effect in one call.
+
+| Parameter  | Type    | Max | Description                    |
+|------------|---------|-----|--------------------------------|
+| `enabled`  | boolean | —   | Enables or disables noise      |
+| `strength` | number  | 1   | Intensity of the film grain    |
+
 ### Effects
 
 #### `effect_layer_set(slot, effect_name)`  
