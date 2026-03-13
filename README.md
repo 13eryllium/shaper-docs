@@ -513,6 +513,26 @@ Draws sprites with custom anchor points.
 #### `draw_sprite_fog(sprite, subimg, _x, _y, xscale, yscale, rotation, blend, fog_blend, alpha, fog_alpha)`
 Draws sprites with an optional completely solid color overlay.
 
+
+#### `draw_sprite_anchored_fog(sprite, subimg, x, y, xscale, yscale, rotation, blend, fog_blend, alpha, fog_alpha, xoff, yoff)`
+Draws a sprite with a custom anchor point and an optional solid color overlay, combining the functionality of `draw_sprite_anchored_ext` and `draw_sprite_fog`.
+
+| Parameter | Description |
+|-----------|-------------|
+| `sprite` | The sprite to draw |
+| `subimg` | The frame of the sprite to draw |
+| `x` | The x coordinate of the sprite |
+| `y` | The y coordinate of the sprite |
+| `xscale` | The horizontal scale of the sprite |
+| `yscale` | The vertical scale of the sprite |
+| `rotation` | The rotation angle of the sprite in degrees |
+| `blend` | The tint color of the sprite |
+| `fog_blend` | The color of the solid overlay |
+| `alpha` | The alpha transparency of the sprite |
+| `fog_alpha` | The alpha of the solid color overlay |
+| `xoff` | The horizontal anchor offset in pixels |
+| `yoff` | The vertical anchor offset in pixels |
+
 | Parameter | Description |
 |-----------|-------------|
 | `sprite` | The sprite to draw |
@@ -526,6 +546,23 @@ Draws sprites with an optional completely solid color overlay.
 | `fog_blend` | The color of the solid overlay |
 | `alpha` | The alpha of the image |
 | `fog_alpha` | The alpha of the solid overlay |
+
+#### `draw_sprite_cubed_ext(sprite, subimg, x, y, size, pitch, yaw, roll, color, alpha, shading)`
+Draws a sprite as if it were painted onto all visible faces of a 3D cube, with full pitch, yaw, and roll rotation.
+
+| Parameter | Description |
+|-----------|-------------|
+| `sprite` | The sprite to draw |
+| `subimg` | The frame of the sprite to draw |
+| `x` | The x coordinate of the cube's center |
+| `y` | The y coordinate of the cube's center |
+| `size` | Half-size (radius) of the cube in pixels |
+| `pitch` | Rotation around the X axis in degrees |
+| `yaw` | Rotation around the Y axis in degrees |
+| `roll` | Rotation around the Z axis in degrees |
+| `color` | The tint color applied to the sprite |
+| `alpha` | The alpha transparency of the sprite |
+| `shading` | Whether to apply shading across faces |
 
 #### `draw_sprite_skew_ext(sprite, index, x, y, xscale, yscale, angle, angle_sin, tint, alpha, hskew, vskew)`
 Draws a sprite with rotation, scaling, and horizontal/vertical skew applied.
