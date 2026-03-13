@@ -631,6 +631,13 @@ Randomly selects one value from the provided arguments.
 
 ### Camera Functions
 
+#### `screen_bounds(padding)`
+Returns a struct containing the limits of the camera with optional padding. (`left`, `right`, `up`, `down`)
+
+| Parameter | Description |
+|-----------|-------------|
+| `padding` | The player number (0-3) |
+
 #### `camera_set_pos(x, y)`
 Sets the camera's position directly.
 
