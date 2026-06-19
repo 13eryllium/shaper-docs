@@ -636,7 +636,7 @@ Returns a struct containing the limits of the camera with optional padding. (`le
 
 | Parameter | Description |
 |-----------|-------------|
-| `padding` | The player number (0-3) |
+| `padding` | The distance from the edges of the screen. |
 
 #### `camera_set_pos(x, y)`
 Sets the camera's position directly.
